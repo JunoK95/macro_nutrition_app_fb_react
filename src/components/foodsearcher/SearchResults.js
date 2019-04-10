@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TitleCase , DeleteStringSection } from '../../helpers.js'
+import { TitleCase , DeleteUPCSection } from '../../helpers.js'
 import {Link} from 'react-router-dom'
 
 class SearchResults extends Component{
@@ -83,7 +83,7 @@ class SearchResults extends Component{
                                     <tr key={item.ndbno} className="success">
                                         <td value={item.ndbno} name="selectedndbno" style={{cursor: 'pointer'}}>
                                             <Link to={`/foodinfo/${item.ndbno}`} >
-                                                {DeleteStringSection(TitleCase(item.name))}
+                                                {DeleteUPCSection(TitleCase(item.name))}
                                             </Link>     
                                         </td>
                                     </tr>

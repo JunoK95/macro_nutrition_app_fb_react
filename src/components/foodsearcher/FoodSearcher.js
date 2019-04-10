@@ -22,7 +22,8 @@ class FoodSearcher extends React.Component{
     /// Get Value from SearchBar Component then fetches api
     submitToParent(searchValue){
         if (searchValue !== ""){
-            const apiCall = "https://api.nal.usda.gov/ndb/search/?format=json&q="+String(searchValue)+"&sort=r&max=500&offset=0&api_key=rAebodHVqSo7XtWRjjcs32d57qAVUYMSwP8muiwK"
+            const api_key = (process.env.REACT_APP_NDBNO_API_KEY)
+            const apiCall = `https://api.nal.usda.gov/ndb/search/?format=json&q=${searchValue}&sort=r&max=500&offset=0&api_key=${api_key}`
             fetch (apiCall)
             .then(response => response.json())
             .then(data => {

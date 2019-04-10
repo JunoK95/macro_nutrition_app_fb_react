@@ -5,18 +5,18 @@ import { reactReduxFirebase, firebaseReducer } from 'react-redux-firebase'
 import { reduxFirestore, firestoreReducer} from 'redux-firestore'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDOwfSpMe-krzquRQVfvc1RmA1kgKI30jU",
-    authDomain: "macro-nutrition-app.firebaseapp.com",
-    databaseURL: "https://macro-nutrition-app.firebaseio.com",
-    projectId: "macro-nutrition-app",
-    storageBucket: "",
-    messagingSenderId: "353832183093"
+  apiKey: "AIzaSyApty-6WbliG3PeLWFDCWYeElI8PDcUH6M",
+  authDomain: "macro-nutrition-app-e472e.firebaseapp.com",
+  databaseURL: "https://macro-nutrition-app-e472e.firebaseio.com",
+  projectId: "macro-nutrition-app-e472e",
+  storageBucket: "macro-nutrition-app-e472e.appspot.com",
+  messagingSenderId: "967508520633"
 }
 
 // react-redux-firebase config
 const rrfConfig = {
-    userProfile: 'users',
-    useFirestoreForProfile: true  // Firestore for Profile instead of Realtime DB
+  userProfile: 'users',
+  useFirestoreForProfile: true  // Firestore for Profile instead of Realtime DB
 }
 
 // init firebase instance
