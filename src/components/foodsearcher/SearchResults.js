@@ -10,7 +10,6 @@ class SearchResults extends Component{
             selectedndbno: null,
             page : 1
         }
-    
     }
 
     handleChange = (event) => {
@@ -19,6 +18,7 @@ class SearchResults extends Component{
         this.setState({[name]: value})
     }
 
+    //UNUSED after changing from ContextAPI to firebase redux
     //Change Global State Context API
     changeContext = (event) => {
         event.preventDefault();
@@ -72,7 +72,6 @@ class SearchResults extends Component{
 
         return(
             <div className="container">
-                NUMBER CHOSEN = {this.state.selectedndbno}
                 <br />
                 <table className="table table-striped">
                     <thead></thead>

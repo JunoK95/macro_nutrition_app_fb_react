@@ -5,7 +5,7 @@ import { reactReduxFirebase, firebaseReducer } from 'react-redux-firebase'
 import { reduxFirestore, firestoreReducer} from 'redux-firestore'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyApty-6WbliG3PeLWFDCWYeElI8PDcUH6M",
+  apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
   authDomain: "macro-nutrition-app-e472e.firebaseapp.com",
   databaseURL: "https://macro-nutrition-app-e472e.firebaseio.com",
   projectId: "macro-nutrition-app-e472e",
