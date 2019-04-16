@@ -37,15 +37,15 @@ class FoodSearcher extends React.Component{
     }
 
     render(){       
-        let properties = []
+        /* let properties = []
         //workaround for api call before fetch
         try {
             properties =
               this.state.info.list.item
         } catch (exception) {
             console.log("API fetch not yet received")
-        }
-        const productNames = properties.map(x => 
+        } */
+        /* const productNames = properties.map(x => 
             <div key={x.ndbno} >
                 <button  
                     type ="button"
@@ -56,7 +56,7 @@ class FoodSearcher extends React.Component{
                 {x.name}
                 </button>
                 <br />
-            </div>)
+            </div>) */
         return(
             <div>   
                 <SearchBar submitToParent={this.submitToParent}/> 

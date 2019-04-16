@@ -6,7 +6,7 @@ import {firebaseConnect} from 'react-redux-firebase'
 import {notifyUser} from '../../actions/notifyActions'
 import Alert from '../layout/Alert'
 
-class Login extends Component {
+class Register extends Component {
     state = {
         email: '',
         password: ''
@@ -22,10 +22,8 @@ class Login extends Component {
         const {firebase} = this.props;
         const {email, password} = this.state
 
-        firebase.login({
-            email,
-            password
-        }).catch(error => this.props.notifyUser('Invalid Login Credentials', 'error'))
+        //Register
+        firebase.createUser({ email, password }).catch(err => notifyUser('That User Already Exists','error'))
     }
 
     render() {
@@ -40,7 +38,7 @@ class Login extends Component {
                             <h1 className="text-center pb-4 pt-3">
                                 <span className="text-primary">
                                     <i className="fas fa-lock" /> {''}
-                                    Login
+                                    Register
                                 </span>
                             </h1>
                             <form onSubmit={this.onSubmit}>
@@ -52,7 +50,7 @@ class Login extends Component {
                                     <label htmlFor="password">Email</label>
                                     <input type="password" className="form-control" name="password" required value={this.state.password} onChange={this.onChange} />
                                 </div>
-                                <input type="submit" value="Login" className="btn btn-primary btn-block" />
+                                <input type="submit" value="Register" className="btn btn-primary btn-block" />
                             </form>
                         </div>
                     </div>
@@ -62,8 +60,10 @@ class Login extends Component {
     }
 }
 
-Login.propTypes = {
-    firebase: PropTypes.object.isRequired
+Register.propTypes = {
+    firebase: PropTypes.object.isRequired,
+    notify: PropTypes.object.isRequired,
+    notifyUser: PropTypes.func.isRequired
 }
 
 export default compose(
@@ -71,4 +71,4 @@ export default compose(
     connect((state, props) => ({
         notify: state.notify
     }), {notifyUser})
-)(Login)
+)(Register)
