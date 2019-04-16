@@ -14,22 +14,40 @@ import Pantry from './components/profile/Pantry';
 import AppNavbar from './components/layout/AppNavbar';
 import Register from './components/login/Register';
 
+const LoginContainer = () => {
+  return(
+    <div>
+      <Route exact path="/login" component={UserIsNotAuthenticated(Login)} />
+      <Route exact path="/register" component={UserIsNotAuthenticated(Register)} />
+    </div>
+  )
+}
+
+const DefaultContainer = () => {
+  return(
+    <div>
+      <AppNavbar />
+      <Route exact path="/" component={UserIsAuthenticated(FoodSearcher)} />
+      <Route exact path="/foodInfo/:ndbno" component={UserIsAuthenticated(FoodInfo)} />
+      <Route exact path="/profile/:id" component={UserIsAuthenticated(Profile)} />
+      <Route exact path="/pantry/:id" component={UserIsAuthenticated(Pantry)} />
+    </div>
+  )
+}
+
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <Router>
-          <div className="App">
-            <AppNavbar />
-              <Switch>
-                  <Route exact path="/" component={FoodSearcher} />
-                  <Route exact path="/login" component={UserIsNotAuthenticated(Login)} />
-                  <Route exact path="/register" component={UserIsNotAuthenticated(Register)} />
-                  <Route exact path="/foodInfo/:ndbno" component={FoodInfo} />
-                  <Route exact path="/profile/:id" component={UserIsAuthenticated(Profile)} />
-                  <Route exact path="/pantry/:id" component={UserIsAuthenticated(Pantry)} />
-              </Switch>   
-          </div>
+          <Switch>
+            <React.Fragment>
+              <div className="App">
+                <Route exact path="/(login)" component={LoginContainer}/>
+                <Route component={DefaultContainer}/>
+              </div>
+            </React.Fragment>
+          </Switch>   
         </Router>
       </Provider>
     );

@@ -23,7 +23,8 @@ class Register extends Component {
         const {email, password} = this.state
 
         //Register
-        firebase.createUser({ email, password }).catch(err => notifyUser('That User Already Exists','error'))
+        firebase.createUser({ email, password })
+            .catch(err => notifyUser('That User Already Exists','error'))
     }
 
     render() {

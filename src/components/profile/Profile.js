@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
+import LoadingGif from '../layout/LoadingGif';
 
 
 class Profile extends Component {
@@ -31,7 +32,7 @@ class Profile extends Component {
         else{
             return(
                 <div>
-                    ...loading
+                    <LoadingGif />
                 </div>
             )
         }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
+import LoadingGif from '../layout/LoadingGif';
 
 
 class Pantry extends Component {
@@ -28,7 +29,7 @@ class Pantry extends Component {
         else{
             return(
                 <div>
-                    ...loading
+                    <LoadingGif />
                 </div>
             )
         }
