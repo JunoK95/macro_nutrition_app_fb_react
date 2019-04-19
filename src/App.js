@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import {UserIsAuthenticated, UserIsNotAuthenticated} from './helpers/auth'
 
 import { Provider } from 'react-redux';
@@ -13,6 +13,32 @@ import Profile from './components/profile/Profile';
 import Pantry from './components/profile/Pantry';
 import AppNavbar from './components/layout/AppNavbar';
 import Register from './components/login/Register';
+import PageNotFound from './components/layout/PageNotFound';
+import ProfileTest from './components/profile/ProfileTest';
+import FirstTimeSetup2 from './components/profile/FirstTimeSetup2';
+import Header from './components/layout/Header'
+
+
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          <div className="App">
+            <Switch>
+                <Route exact path="/login" component={UserIsNotAuthenticated(Login)} />
+                <Route exact path="/register" component={UserIsNotAuthenticated(Register)} />
+                <Route exact path="/firsttimesetup" component={UserIsAuthenticated(FirstTimeSetup2)} /> 
+                <Route exact path="/testprofile" component={ProfileTest} /> 
+                <Route component={DefaultContainer} />                
+            </Switch>
+          </div>   
+        </Router>
+      </Provider>
+    );
+  }
+}
 
 const LoginContainer = () => {
   return(
@@ -26,32 +52,17 @@ const LoginContainer = () => {
 const DefaultContainer = () => {
   return(
     <div>
-      <AppNavbar />
-      <Route exact path="/" component={UserIsAuthenticated(FoodSearcher)} />
-      <Route exact path="/foodInfo/:ndbno" component={UserIsAuthenticated(FoodInfo)} />
-      <Route exact path="/profile/:id" component={UserIsAuthenticated(Profile)} />
-      <Route exact path="/pantry/:id" component={UserIsAuthenticated(Pantry)} />
+      <Header />
+      <AppNavbar/>
+        <Switch>
+          <Route exact path="/search" component={UserIsAuthenticated(FoodSearcher)} />
+          <Route exact path="/foodInfo/:ndbno" component={UserIsAuthenticated(FoodInfo)} />
+          <Route exact path="/profile" component={UserIsAuthenticated(Profile)} />       
+          <Route exact path="/pantry" component={UserIsAuthenticated(Pantry)} />
+          <Redirect to="/profile" /> 
+        </Switch>
     </div>
   )
-}
-
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router>
-          <Switch>
-            <React.Fragment>
-              <div className="App">
-                <Route exact path="/(login)" component={LoginContainer}/>
-                <Route component={DefaultContainer}/>
-              </div>
-            </React.Fragment>
-          </Switch>   
-        </Router>
-      </Provider>
-    );
-  }
 }
 
 export default App;

@@ -13,17 +13,17 @@ class MenuContent extends Component {
         return (
             <div className="menu">
                 <div className="menu-item">
-                    <Link to={`/Profile/${auth.uid}`} onClick={this.props.closeCallback}>
+                    <Link to={`/profile`} onClick={this.props.closeCallback}>
                         Profile
                     </Link>
                 </div>
                 <div className="menu-item">
-                    <Link to={`/Pantry/${auth.uid}`} onClick={this.props.closeCallback}>
+                    <Link to={`/pantry`} onClick={this.props.closeCallback}>
                         Pantry
                     </Link>
                 </div>
                 <div className="menu-item">
-                    <Link to='/' onClick={this.props.closeCallback}>
+                    <Link to='/search' onClick={this.props.closeCallback}>
                         Search
                     </Link>
                 </div>
