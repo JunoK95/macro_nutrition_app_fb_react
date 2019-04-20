@@ -12,6 +12,9 @@ class MenuContent extends Component {
         const {auth} = this.props
         return (
             <div className="menu">
+                <div>
+                    BRANDING
+                </div>
                 <div className="menu-item">
                     <Link to={`/profile`} onClick={this.props.closeCallback}>
                         Profile

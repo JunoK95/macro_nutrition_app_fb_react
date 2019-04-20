@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 import {firebaseConnect, firestoreConnect} from 'react-redux-firebase'
 import {notifyUser} from '../../actions/notifyActions'
 import Alert from '../layout/Alert'
-import store from '../../store'
 
 class Register extends Component {
     state = {
@@ -22,7 +21,6 @@ class Register extends Component {
     onSubmit = (event) => {
         event.preventDefault()
         const {firebase} = this.props;
-        const {firestore} = this.props;
         const {email, password} = this.state
 
         //Register

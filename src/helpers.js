@@ -5,3 +5,4 @@ export function TitleCase(str){
 export function DeleteUPCSection(fullStr){
     return fullStr.replace(/upc:[0-9]+$/gmi, "")
 }
+

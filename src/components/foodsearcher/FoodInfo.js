@@ -43,7 +43,7 @@ class FoodInfo extends Component{
     componentDidMount(){
         const api_key = (process.env.REACT_APP_NDBNO_API_KEY)
         const ndbno = this.props.match.params.ndbno
-        const apiLink = `https://api.nal.usda.gov/ndb/V2/reports?ndbno=${ndbno}+&type=b&format=json&api_key=${api_key}`
+        const apiLink = `https://api.nal.usda.gov/ndb/V2/reports?ndbno=${ndbno}&type=b&format=json&api_key=${api_key}`
         
         fetch (apiLink)
             .then(response => response.json())

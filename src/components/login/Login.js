@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import {firebaseConnect} from 'react-redux-firebase'
 import {notifyUser} from '../../actions/notifyActions'
 import Alert from '../layout/Alert'
+import {setUser} from '../../actions/userActions'
 
 class Login extends Component {
     state = {
@@ -26,7 +27,14 @@ class Login extends Component {
         firebase.login({
             email,
             password
-        }).catch(error => this.props.notifyUser('Invalid Login Credentials', 'error'))
+        })
+        .catch(error => this.props.notifyUser('Invalid Login Credentials', 'error'))
+        .then(() => firebase.auth().onAuthStateChanged((x) => {
+            console.log(x)
+            const {email,uid} = x
+            this.props.setUser({email,uid})
+            }
+        ))
     }
 
     render() {
@@ -73,5 +81,5 @@ export default compose(
     firebaseConnect(),
     connect((state, props) => ({
         notify: state.notify
-    }), {notifyUser})
+    }), {notifyUser, setUser})
 )(Login)

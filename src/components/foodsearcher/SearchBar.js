@@ -20,7 +20,7 @@ class SearchBar extends React.Component{
     handleSubmit(event){
         event.preventDefault();
         this.props.submitToParent(this.state.inputValue)
-        this.setState({inputValue: ""})
+        //this.setState({inputValue: ""})  will reset searchbar
     }
 
     render(){

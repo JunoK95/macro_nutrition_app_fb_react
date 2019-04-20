@@ -123,6 +123,12 @@ class FirstTimeSetup2 extends Component {
     }
 }
 
+FirstTimeSetup2.propTypes = {
+    firebase: PropTypes.object.isRequired,
+    firestore: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
+}
+
 export default compose(
     firestoreConnect(),
     firebaseConnect(),
