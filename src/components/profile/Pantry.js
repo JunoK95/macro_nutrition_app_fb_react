@@ -13,6 +13,7 @@ class Pantry extends Component {
     }
 
     deleteClicked = (e) => {
+        e.preventDefault()
         const value = e.target.getAttribute('value')
         console.log(value, " was clicked")
         const {firestore, userInfo} = this.props
@@ -76,7 +77,7 @@ class Pantry extends Component {
             pantryList = this.state.foodValues.foods.map(
                 food => {
                     if(this.state.foodList.includes(food.food.desc.ndbno)){
-                        return(<PantryItem key={food.food.desc.ndbno} value={food.food} deleteClicked={this.deleteClicked} />)
+                        return(<PantryItem key={food.food.desc.ndbno} id={food.food.desc.ndbno} value={food.food} deleteClicked={this.deleteClicked} />)
                     }
                 }
             )
