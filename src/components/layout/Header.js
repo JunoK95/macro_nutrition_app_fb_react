@@ -31,10 +31,10 @@ class Header extends Component{
         const {isAuthenticated} = this.state
         const {auth} = this.props
         return(
-            <nav className="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+            <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
                 <div className="container">
                     <Link to="/" className="navbar-brand">
-                        FAST NUT
+                        Welcome
                     </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain">
                         <span className="navbar-toggler-icon" />

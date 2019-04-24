@@ -5,15 +5,16 @@ import {Link} from 'react-router-dom'
 import {compose} from 'redux'
 import {connect} from 'react-redux'
 import {firebaseConnect} from 'react-redux-firebase'
+import food_logo from './food_logo.png'
 
 class MenuContent extends Component {
     
     render() {
-        const {auth} = this.props
+        //const {auth} = this.props
         return (
             <div className="menu">
                 <div>
-                    BRANDING
+                    <img src={food_logo} alt="foodLogo" style={{width: '40%', marginLeft: "auto", marginRight: "auto", display: "block"}} />
                 </div>
                 <div className="menu-item">
                     <Link to={`/profile`} onClick={this.props.closeCallback}>

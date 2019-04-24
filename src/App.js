@@ -13,7 +13,6 @@ import Profile from './components/profile/Profile';
 import Pantry from './components/profile/Pantry';
 import AppNavbar from './components/layout/AppNavbar';
 import Register from './components/login/Register';
-import PageNotFound from './components/layout/PageNotFound';
 import ProfileTest from './components/profile/ProfileTest';
 import FirstTimeSetup2 from './components/profile/FirstTimeSetup2';
 import Header from './components/layout/Header'
@@ -40,14 +39,14 @@ class App extends Component {
   }
 }
 
-const LoginContainer = () => {
+/* const LoginContainer = () => {
   return(
     <div>
       <Route exact path="/login" component={UserIsNotAuthenticated(Login)} />
       <Route exact path="/register" component={UserIsNotAuthenticated(Register)} />
     </div>
   )
-}
+} */
 
 const DefaultContainer = () => {
   return(

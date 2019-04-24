@@ -6,6 +6,7 @@ import {firestoreConnect ,firebaseConnect} from 'react-redux-firebase'
 import LoadingGif from '../layout/LoadingGif'
 import { setUser } from '../../actions/userActions'
 import PantryItem from './PantryItem';
+import {Link} from 'react-router-dom'
 
 class Pantry extends Component {
     state = {
@@ -15,14 +16,12 @@ class Pantry extends Component {
     deleteClicked = (e) => {
         e.preventDefault()
         const value = e.target.getAttribute('value')
-        console.log(value, " was clicked")
         const {firestore, userInfo} = this.props
         let collectionRef = firestore.collection('pantries')
         let documentRef = collectionRef.doc(userInfo.uid)
         documentRef.update({foods: firestore.FieldValue.arrayRemove(value)})
             .then(() => {
                 let newFoodList = [...this.state.foodList]
-                console.log(newFoodList)
                 newFoodList.splice(newFoodList.indexOf(value),1)
                 this.setState({...this.state,foodList: newFoodList})
             })
@@ -50,20 +49,18 @@ class Pantry extends Component {
         let documentRef = null
 
         //if redux state isn't set from page refreshing/whatnot get uid/email from firebase.auth() and set it again
-        if(this.props.userInfo.uid === ""){
+        if(firebase.auth().currentUser){
             const {email, uid} = firebase.auth().currentUser
-            console.log(firebase.auth().currentUser)
             this.props.setUser({email : email ,uid : uid })
             documentRef = collectionRef.doc(uid)
         } else{
-            documentRef = collectionRef.doc(this.props.userInfo.uid)
+            documentRef = collectionRef.doc(firebase.auth().currentUser.uid)
         }
          
         documentRef.get()
             .then((docSnapshot) => {
                 if (docSnapshot.exists){   
                     const {foods} = docSnapshot.data()   
-                    console.log(foods)         
                     this.setState({...this.state, foodList: foods})
                     this.getFoodInfo(foods)
                 }
@@ -71,50 +68,47 @@ class Pantry extends Component {
     }
 
     render(){
-
         let pantryList;
         if(this.state.foodValues){
             pantryList = this.state.foodValues.foods.map(
                 food => {
                     if(this.state.foodList.includes(food.food.desc.ndbno)){
                         return(<PantryItem key={food.food.desc.ndbno} id={food.food.desc.ndbno} value={food.food} deleteClicked={this.deleteClicked} />)
-                    }
+                    } return null
                 }
             )
+        } else {
+            pantryList = []
         }
-        
-        const {userInfo} = this.props
-        
-        if(userInfo){
-            /* const faveFoodList = userInfo.favoriteFoods.map(x => {
+
+        if(pantryList){
+            if (pantryList.length > 0){
                 return(
-                    <div key={x}>
-                        {x}
+                    <div className="container card">
+                        {pantryList}
                     </div>
-                )}
-            ) */
-            
-            return(
-                <div className="container card">
-                    {pantryList}
-                </div>
-            )
-        }
-        else{
+                )
+            } else {
+                return(
+                    <div className="container card">
+                        Your Pantry seems to be Empty
+                        <Link to='/search'>Add Food Items</Link>
+                    </div>
+                )
+            }         
+        } else{
             return(
                 <div>
                     <LoadingGif />
                 </div>
             )
         }
-
     }
 }
 
 Pantry.propTypes = {
     firestore: PropTypes.object.isRequired,
     firebase: PropTypes.object.isRequired,
-    userInfo: PropTypes.object.isRequired
 }
 
 export default compose(

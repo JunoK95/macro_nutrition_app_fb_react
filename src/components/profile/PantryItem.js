@@ -3,12 +3,10 @@ import {Link} from 'react-router-dom'
 
 
 function PantryItem(props){
-    console.log(props.value)
     const cal = props.value.nutrients.filter(x => x.nutrient_id === "208")
     const prot = props.value.nutrients.filter(x => x.nutrient_id === "203")
     const fat = props.value.nutrients.filter(x => x.nutrient_id === "204")
     const carb = props.value.nutrients.filter(x => x.nutrient_id === "205")
-    console.log(fat)
     return(
         <div className="card">
             <div className="card-body">

@@ -11,7 +11,7 @@ class FoodInfo extends Component{
         added : false,
         ndbno : '',
         info: null,
-        foodAmount: 0
+        foodAmount: ''
     }
 
     addToPantry = (e) => {
@@ -62,7 +62,8 @@ class FoodInfo extends Component{
 
             const collectionRef = firestore.collection('users').doc(auth.uid).collection('mealsAte')
             const documentRef = collectionRef.doc(date)
-
+            this.setState({foodAmount : ''})
+            alert("Nom")
             return firestore.runTransaction(transaction => {
                 return transaction.get(documentRef).then(doc => {
                     if(!doc.exists){
@@ -70,9 +71,14 @@ class FoodInfo extends Component{
                     }
                     else{
                         let newNutrition = doc.data()
-                        if (newNutrition.food[ndbno] === "NaN" || !(ndbno in newNutrition.food)){
-                            newNutrition.food[ndbno] = 0
+                        if(newNutrition.food){
+                            if (newNutrition.food[ndbno] === "NaN" || !(ndbno in newNutrition.food)){
+                                newNutrition.food[ndbno] = 0
+                            }
+                        }else{
+                            newNutrition = {...newNutrition, food: {[ndbno]: 0}}
                         }
+                        
                         newNutrition.food[ndbno] = String(Number(newNutrition.food[ndbno]) + Number(foodObject.food[ndbno]))
                         for (let x in newNutrition.nutrition){
                             x = String(x)
@@ -87,7 +93,6 @@ class FoodInfo extends Component{
                 })
             })
         }
-
         
     }
 
