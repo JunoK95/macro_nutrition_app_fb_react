@@ -31,3 +31,10 @@ export function ConfigDate(today){
 export function toPercent(num){
     return (num * 100).toFixed(0)
 }
+
+export function objIsEmpty( obj ) { 
+    for ( let prop in obj ) { 
+      return false; 
+    } 
+    return true; 
+}

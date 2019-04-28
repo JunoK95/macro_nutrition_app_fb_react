@@ -14,7 +14,9 @@ class MenuContent extends Component {
         return (
             <div className="menu">
                 <div>
-                    <img src={food_logo} alt="foodLogo" style={{width: '40%', marginLeft: "auto", marginRight: "auto", display: "block"}} />
+                    <Link to={`/profile`} onClick={this.props.closeCallback}>
+                        <img src={food_logo} alt="foodLogo" style={{width: '40%', marginLeft: "auto", marginRight: "auto", display: "block"}} />
+                    </Link>
                 </div>
                 <div className="menu-item">
                     <Link to={`/profile`} onClick={this.props.closeCallback}>

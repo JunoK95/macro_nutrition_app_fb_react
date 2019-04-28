@@ -7,6 +7,8 @@ import LoadingGif from '../layout/LoadingGif';
 import CircleGauge from './CircleGauge';
 import { GetDate, toPercent, ConfigDate } from '../../helpers';
 import '../layout/diamondGrid.css'
+import Pantry from './Pantry';
+import FoodHistory from './FoodHistory';
 
 class Profile extends Component {
     state = {
@@ -126,7 +128,7 @@ class Profile extends Component {
                     </div>
                 )}
             )
-            
+
             //const {userInfo} = this.props
             const {todayNut, dietLimits} = this.state
 
@@ -152,14 +154,18 @@ class Profile extends Component {
                         
                         <div className="card-body">
                             <div className="row centered">
-                                <div className="col-md-3"><CircleGauge name="Cal" value={toPercent(todayNut.calories/dietLimits.calorie)} color="orange" /></div>
-                                <div className="col-md-3"><CircleGauge name="Carbs" value={toPercent(todayNut.carbs/dietLimits.carb)} color="green" /></div>
-                                <div className="col-md-3"><CircleGauge name="Fats" value={toPercent(todayNut.fats/dietLimits.fat)} color="gold" /></div>
-                                <div className="col-md-3"><CircleGauge name="Protein" value={toPercent(todayNut.protein/dietLimits.protein)} color="indigo" /></div>                                              
+                                <div className="col-md-2">
+                                    <div className="col-md-3"><CircleGauge big='big' name="Cal" value={toPercent(todayNut.calories/dietLimits.calorie)} today={todayNut.calories} dietLimits={dietLimits.calorie} color="orange" /></div>
+                                </div>
+                                <div className="col-md-2">
+                                    <div className="col-md-3"><CircleGauge big="small" name="Carbs" value={toPercent(todayNut.carbs/dietLimits.carb)} today={todayNut.carbs} dietLimits={dietLimits.carb} color="green" /></div>
+                                    <div className="col-md-3"><CircleGauge big="small" name="Fats" value={toPercent(todayNut.fats/dietLimits.fat)} today={todayNut.fats} dietLimits={dietLimits.fat} color="gold" /></div>
+                                    <div className="col-md-3"><CircleGauge big="small" name="Protein" value={toPercent(todayNut.protein/dietLimits.protein)} today={todayNut.protein} dietLimits={dietLimits.protein} color="indigo" /></div>                                              
+                                </div>
+                                <div className="col-md-8">
+                                    <FoodHistory date={this.state.date} />
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            {faveFoodList}
                         </div>
                     </div>
                 </div>
