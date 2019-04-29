@@ -13,9 +13,14 @@ class MenuContent extends Component {
         //const {auth} = this.props
         return (
             <div className="menu">
-                <div>
+                <div className="menu-item menu-item-brand">
                     <Link to={`/profile`} onClick={this.props.closeCallback}>
                         <img src={food_logo} alt="foodLogo" style={{width: '40%', marginLeft: "auto", marginRight: "auto", display: "block"}} />
+                    </Link>
+                </div>
+                <div className="menu-item">
+                    <Link to={`/profile`} onClick={this.props.closeCallback}>
+                        About
                     </Link>
                 </div>
                 <div className="menu-item">
@@ -31,6 +36,11 @@ class MenuContent extends Component {
                 <div className="menu-item">
                     <Link to='/search' onClick={this.props.closeCallback}>
                         Search
+                    </Link>
+                </div>
+                <div className="menu-item">
+                    <Link to={`/profile`} onClick={this.props.closeCallback}>
+                        Support
                     </Link>
                 </div>
             </div>

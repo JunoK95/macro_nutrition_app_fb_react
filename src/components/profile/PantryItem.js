@@ -13,15 +13,17 @@ function PantryItem(props){
                 <div className="row">
                     <div className="col col-md-8">
                         <Link to={`/foodinfo/${props.value.desc.ndbno}`} >
-                            <h6 className="card-title">{props.value.desc.name}</h6>
+                            <h6 className="card-title" style={{overflow: "hidden"}}>{props.value.desc.name}</h6>
                         </Link>
-                        <h6 className="card-subtitle text-muted" style={{fontSize: "80%"}}>{props.value.desc.manu ? props.value.desc.manu : null}</h6>
+                        <h6 className="card-subtitle text-muted" style={{fontSize: "80%", overflow: "hidden"}}>{props.value.desc.manu ? props.value.desc.manu : null}</h6>
                     </div>
-                    <div className="col col-md-4 list-inline">
-                        <h6 className="text-muted list-inline-item" style={{fontSize: "80%"}}>{cal[0].value}kcal</h6>
-                        <h6 className="text-muted list-inline-item" style={{fontSize: "80%"}}>p {prot[0].value}g</h6>
-                        <h6 className="text-muted list-inline-item" style={{fontSize: "80%"}}>f {fat[0].value}g </h6>
-                        <h6 className="text-muted list-inline-item" style={{fontSize: "80%"}}>c {carb[0].value}g</h6>
+                    <div className="col col-md-3 list-inline">
+                        <h6 className="text-muted list-inline-item" style={{fontSize: "70%"}}>{cal[0].value}kcal</h6>
+                        <h6 className="text-muted list-inline-item" style={{fontSize: "70%"}}>p {prot[0].value}g</h6>
+                        <h6 className="text-muted list-inline-item" style={{fontSize: "70%"}}>f {fat[0].value}g </h6>
+                        <h6 className="text-muted list-inline-item" style={{fontSize: "70%"}}>c {carb[0].value}g</h6>
+                    </div>
+                    <div className="col-md-1 list-inline">
                         <i className="fas fa-trash float-right list-inline-item" value={props.value.desc.ndbno} style={{color:"red", cursor:"pointer", textAlign:"center", fontSize:"110%"}} onClick={props.deleteClicked}></i>
                     </div>
                 </div> 
