@@ -155,7 +155,7 @@ class Profile extends Component {
                         <div className="card-body">
                             <div className="row centered">
                                 <div className="col-md-2">
-                                    <div className="col-md-3"><CircleGauge big='big' name="Cal" value={toPercent(todayNut.calories/dietLimits.calorie)} today={todayNut.calories} dietLimits={dietLimits.calorie} color="orange" /></div>
+                                    <div className="col-md-3"><CircleGauge big='small' name="Cal" value={toPercent(todayNut.calories/dietLimits.calorie)} today={todayNut.calories} dietLimits={dietLimits.calorie} color="orange" /></div>
                                 </div>
                                 <div className="col-md-2">
                                     <div className="col-md-3"><CircleGauge big="small" name="Carbs" value={toPercent(todayNut.carbs/dietLimits.carb)} today={todayNut.carbs} dietLimits={dietLimits.carb} color="green" /></div>

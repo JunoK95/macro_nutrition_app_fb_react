@@ -8,6 +8,7 @@ import notifyReducer from './reducers/notifyReducer'
 import userReducer from './reducers/userReducer'
 
 const firebaseConfig = {
+  //AIzaSyApty-6WbliG3PeLWFDCWYeElI8PDcUH6M
   apiKey: `${process.env.REACT_APP_FIREBASE_API_KEY}`,
   authDomain: "macro-nutrition-app-e472e.firebaseapp.com",
   databaseURL: "https://macro-nutrition-app-e472e.firebaseio.com",

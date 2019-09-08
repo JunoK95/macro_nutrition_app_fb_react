@@ -95,13 +95,13 @@ class FoodHistory extends Component {
         if(historyList){
             if (historyList.length > 0){
                 return(
-                    <div className="container card">
+                    <div className="container card" style={{width: '60%', float: 'right'}}>
                         {historyList}
                     </div>
                 )
             } else {
                 return(
-                    <div className="container card">
+                    <div className="container card" style={{width: '60%', float: 'right'}}>
                         You haven't eaten
                         <Link to='/search'>Add Food Items</Link>
                     </div>

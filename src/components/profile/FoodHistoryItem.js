@@ -18,10 +18,10 @@ function FoodHistoryItem(props){
                         <h6 className="card-subtitle text-muted" style={{fontSize: "80%"}}>{props.value.desc.manu ? props.value.desc.manu : null}</h6>
                     </div>
                     <div className="col col-md-4 list-inline">
-                        {/* <h6 className="text-muted list-inline-item" style={{fontSize: "60%"}}>{cal[0].value}kcal</h6>
+                        <h6 className="text-muted list-inline-item" style={{fontSize: "60%"}}>{cal[0].value}kcal</h6>
                         <h6 className="text-muted list-inline-item" style={{fontSize: "60%"}}>p {prot[0].value}g</h6>
                         <h6 className="text-muted list-inline-item" style={{fontSize: "60%"}}>f {fat[0].value}g </h6>
-                        <h6 className="text-muted list-inline-item" style={{fontSize: "60%"}}>c {carb[0].value}g</h6> */}
+                        <h6 className="text-muted list-inline-item" style={{fontSize: "60%"}}>c {carb[0].value}g</h6>
                     </div>
                 </div> 
             </div>
